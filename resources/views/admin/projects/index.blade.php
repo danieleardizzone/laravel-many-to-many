@@ -12,6 +12,7 @@
                         <th scope="col">id</th>
                         <th scope="col">title</th>
                         <th scope="col">type</th>
+                        <th scope="col">technologies</th>
                         <th scope="col">slug</th>
                         <th scope="col">content</th>
                     </tr>
@@ -23,7 +24,11 @@
                             
                                 <td><a href="{{ route('admin.projects.show', $project) }}">{{ $project->title }}</a></td>
                                 <td>{{ isset($project->type_id) ? $project->type->name : '-' }}</td>
-                            
+                                <td>
+                                    @foreach ($project->technologies as $technology)
+                                        {{ $technology->name }}
+                                    @endforeach
+                                </td>
                             <td>{{ $project->slug }}</td>
                             <td>{{ $project->content }}</td>
                         </tr>

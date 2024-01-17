@@ -14,12 +14,13 @@ class Project extends Model
 
     protected $fillable = ['title', 'slug', 'content', 'type_id'];
 
-    public function type(): BelongsTo{
+    public function type(): BelongsTo
+    {
 
         return $this->belongsTo(Type::class);
     }
-    public function technologies(): BelongsTo{
-
-        return $this->belongsTo(Technology::class);
+    public function technologies(): BelongsToMany
+    {
+        return $this->belongsToMany(Technology::class);
     }
 }
